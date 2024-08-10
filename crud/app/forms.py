@@ -5,4 +5,4 @@ class StudentReg(forms.ModelForm):
       class Meta:
         model=StuModel
         fields=['name','email','password']
-        widgets={'password':forms.PasswordInput,}
+        widgets={'password':forms.PasswordInput}
