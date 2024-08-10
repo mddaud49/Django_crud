@@ -2,21 +2,83 @@
 {% block content %}
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        td,
+        th {
+            border: 1px solid pink;
+            height: 40px;
+            width: 120px;
+            padding: 2px;
+        }
+        #main{
+            display: flex;
+            text-align: center;
+            justify-content:space-evenly;
+        }
+        #main2{
+            margin-left: 50px;
+        }
+        h3{
+            color: rgb(227, 61, 89);
+        }
+    </style>
 </head>
-<body>
-    <h1>ADD NEW STUDENT </h1>
-    <form action="" method="POST">
-        {% csrf_token %}
-        {{form.as_p}}
-        <input type="submit" value="Add">
-    </form>
-    
 
-    
+<body>
+    <div id="main">
+        <div>
+            <h3>ADD NEW STUDENT </h3>
+            <form action="" method="POST">
+                {% csrf_token %}
+                {{form.as_p}}
+                <input type="submit" value="Add">
+            </form>
+        </div>
+
+        <div id="main2">
+            <h3>SHOW STUDENT DATA </h3>
+            {% if std %}
+            <table>
+                <tr>
+                    <th>STUDENT ID</th>
+                    <th>STUDENT NAME</th>
+                    <th>EMAIL </th>
+                    <th>PASSWORD</th>
+                    <th>Action</th>
+                </tr>
+                {% for st in std %}
+                <tr>
+                    <td>{{st.id}}</td>
+                    <td>{{st.name}}</td>
+                    <td>{{st.email}}</td>
+                    <td>{{st.password}}</td>
+                    <td>
+                        <button> <a href="{% url 'update' st.id %}">Edit</a>  </button>
+                        <form action="{%url 'delete' st.id %}" method="POST" style="margin-top: 10px;">
+                            {% csrf_token %}
+                            <input type="submit" value="Delete">
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </table>
+            {% else %}
+            <p>No data available</p>
+            {% endif %}
+
+
+        </div>
+
+    </div>
+
+
+
 </body>
+
 </html>
 {% endblock content %}

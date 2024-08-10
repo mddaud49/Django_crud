@@ -6,9 +6,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        #update{
+            text-align: center;
+            height: 400px;
+        }
+    </style>
 </head>
 <body>
-    <h1>UPDATE  </h1>
+    <div id="update">
+
+    
+    <h2 style="color: rgb(190, 62, 84);">UPDATE {{id}} </h2>
+    <form action="" method="POST">
+        {% csrf_token %}
+        {{form.as_p}}
+        <input type="submit" value="update">
+        <a href="{% url 'add' %}">Back To Home </a>
+    </form>
+</div>
     
 </body>
 </html>

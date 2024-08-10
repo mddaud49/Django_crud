@@ -4,18 +4,45 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        body{
+            /* margin: 0px; */
+            padding: 0px;
+        }
+        #head{
+            background-color: aqua;  
+            text-align: center;
+            /* align-items: center; */
+            justify-content: center;
+            height: 40px;
+            width: 1100px;
+            margin: auto;
+
+        
+        }
+        #footer{
+            background-color: aqua;  
+            text-align: center;
+            /* align-items: center; */
+            justify-content: center;
+            height: 40px;
+            width: 1100px;
+            margin: auto;
+
+        }
+    </style>
 </head>
 <body>
-    <header>
-        FUN BASED VIEW WITH MODEL FORM 
+    <header id="head">
+       <h1 style="color: blueviolet;">FUN BASED VIEW WITH MODEL FORM</h1>  
     </header>
     <div>
         {% block content %}
         {% endblock content %}
     </div>
 
-    <footer>
-        www.mycrudoperation.com
+    <footer id="footer">
+             <h2 style="color: blueviolet;"> www.mycrudoperation.com</h2>
     </footer>
     
 </body>
